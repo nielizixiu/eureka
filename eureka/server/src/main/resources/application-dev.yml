@@ -1,0 +1,24 @@
+server:
+  port: 9001
+  
+spring: 
+  application:
+    name: eureka-server #给你的微服务应用起一名字
+     # 开启安全控制
+  #security:
+    #user:
+      # 用户名
+      #name: eureka-server
+      # 密码
+      #password: 8e9lx7LuP3436gfsg
+      
+      
+eureka:
+  instance:
+    hostname: localhost  #eureka服务端的实例名称
+  client:
+    register-with-eureka: false #false 设置是否将自己作为客户端注册到注册中心（缺省true） 如果需要集群 制则开启
+    fetch-registry: false # 设置是否从注册中心获取注册信息（缺省true）因为这是一个单点的EurekaServer，不需要同步其它EurekaServer节点的数据，故设为false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      #设置与Eureka Server交互的地址 查询服务和注册服务都需要依赖这个地址

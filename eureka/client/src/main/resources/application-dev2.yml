@@ -1,0 +1,22 @@
+server:
+  port: 9008
+
+spring:
+  application:
+    name: message-server
+
+### 注册中心配置
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #secure-port-enabled: true
+    #security:
+      #user:
+       #name: eureka-server
+        #password: 8e9lx7LuP3436gfsg
+    # Spring Cloud Eureka 注册中心地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:9001/eureka/
+    # 针对新服务上线, Eureka client获取不及时的问题，在测试环境，可以适当提高Client端拉取Server注册信息的频率，默认：30秒
+    registry-fetch-interval-seconds: 30
